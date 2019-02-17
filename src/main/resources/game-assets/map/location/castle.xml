@@ -1,0 +1,13 @@
+<Location>
+    <Name>Kings Castle</Name>
+    <Description>
+Voce entrou no castelo do rei. Voce esta vendo um patio largo.
+Muitas pessoas andam apressadas de lado por outro.
+    </Description>
+    <Ways>
+        <Way>
+            <Choice>Tavern</Choice>
+            <NextLocationName>tavern</NextLocationName>
+        </Way>
+    </Ways>
+</Location>

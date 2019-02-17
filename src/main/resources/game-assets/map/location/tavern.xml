@@ -1,0 +1,17 @@
+<Location>
+    <Name>Moe Tavern</Name>
+    <Description>
+Voce entrou na taverna do moe.
+Esta um dia ensolarado e voce acabou de matar sua fome.
+    </Description>
+    <Ways>
+        <Way>
+            <Choice>Forest</Choice>
+            <NextLocationName>forest</NextLocationName>
+        </Way>
+        <Way>
+            <Choice>Castle</Choice>
+            <NextLocationName>castle</NextLocationName>
+        </Way>
+    </Ways>
+</Location>
