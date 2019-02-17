@@ -3,7 +3,7 @@ package com.company.rpgrunner.repository.map;
 import com.company.rpgrunner.repository.ComponentLoader;
 import com.company.rpgrunner.repository.map.model.Location;
 
-import static com.company.rpgrunner.util.GameResourcesPath.LOCATION_PATH;
+import static com.company.rpgrunner.commons.GameResourcesPath.LOCATION_PATH;
 
 /**
  * Created by Leonardo Tonin on 16/02/19.

@@ -1,18 +1,17 @@
 package com.company.rpgrunner.ui;
 
 import com.company.rpgrunner.repository.gamemanifest.model.GameManifest;
+import com.company.rpgrunner.service.GameManifestService;
 import com.company.rpgrunner.service.LocationService;
-import com.company.rpgrunner.util.GameMessage;
+import com.company.rpgrunner.ui.response.Response;
+import com.company.rpgrunner.ui.response.SimpleMessageResponse;
 
 import java.util.Optional;
 import java.util.Scanner;
 
-import static com.company.rpgrunner.ui.Command.EXIT;
-import static com.company.rpgrunner.ui.Command.GO_TO;
-import static com.company.rpgrunner.ui.Command.HELP;
-import static com.company.rpgrunner.util.GameMessage.INSTRUCTIONS_MESSAGE;
-import static com.company.rpgrunner.util.GameMessage.WELCOME_MESSAGE;
-import static com.company.rpgrunner.util.UserCommandHelper.toUserCommand;
+import static com.company.rpgrunner.commons.GameMessage.*;
+import static com.company.rpgrunner.ui.Command.*;
+import static com.company.rpgrunner.util.PlayerCommandHelper.toPlayerCommand;
 import static java.lang.Boolean.TRUE;
 
 /**
@@ -21,11 +20,13 @@ import static java.lang.Boolean.TRUE;
 public class GameLoop {
 
     private final LocationService locationService;
+    private final ResponseHandler responseHandler;
     private final GameManifest gameManifest;
 
-    public GameLoop(GameManifest gameManifest) {
-        this.gameManifest = gameManifest;
-        locationService = new LocationService();
+    public GameLoop() {
+        gameManifest = new GameManifestService().load();
+        locationService = LocationService.getInstance();
+        responseHandler = new ResponseHandler();
     }
 
     public void runGame() {
@@ -36,16 +37,20 @@ public class GameLoop {
         final Scanner scanner = new Scanner(System.in);
 
         while (TRUE) {
-            Optional<UserCommand> optionalUserCommand = toUserCommand(scanner.nextLine());
+            Optional<PlayerCommand> optionalUserCommand = toPlayerCommand(scanner.nextLine());
 
             if (!optionalUserCommand.isPresent()) {
-                System.out.println("Invalid Command");
+                responseHandler.respondToUser(new SimpleMessageResponse(getMessage(INVALID_COMMAND)));
                 continue;
             }
 
-            UserCommand userCommand = optionalUserCommand.get();
-            Command command = userCommand.getCommand();
-            String target = userCommand.getTarget();
+            PlayerCommand playerCommand = optionalUserCommand.get();
+            Command command = playerCommand.getCommand();
+            String target = playerCommand.getTarget();
+
+            if (LOOK_AROUND.equals(command)) {
+                responseHandler.respondToUser(locationService.lookAround());
+            }
 
             if (HELP.equals(command)) {
                 displayInstructions();
@@ -53,12 +58,12 @@ public class GameLoop {
             }
 
             if (GO_TO.equals(command)) {
-                respondToUser(locationService.goTo(target));
+                responseHandler.respondToUser(locationService.goTo(target));
                 continue;
             }
 
             if (EXIT.equals(command)) {
-                System.out.println("Thank you for play!");
+                responseHandler.respondToUser(new SimpleMessageResponse(getMessage(EXIT_MESSAGE)));
                 break;
             }
         }
@@ -67,20 +72,16 @@ public class GameLoop {
     }
 
     private void displayWelcome() {
-        respondToUser(new Response(GameMessage.getInstance().getMessage(WELCOME_MESSAGE)));
+        responseHandler.respondToUser(new SimpleMessageResponse(getMessage(WELCOME_MESSAGE)));
         displayInstructions();
     }
 
     private void displayInstructions() {
-        respondToUser(new Response(GameMessage.getInstance().getMessage(INSTRUCTIONS_MESSAGE)));
+        responseHandler.respondToUser(new SimpleMessageResponse(getMessage(INSTRUCTIONS_MESSAGE)));
     }
 
     private void startStory() {
         Response response = locationService.goTo(gameManifest.getStartLocation());
-        respondToUser(response);
-    }
-
-    private void respondToUser(Response response) {
-        System.out.println(response.getMessage());
+        responseHandler.respondToUser(response);
     }
 }

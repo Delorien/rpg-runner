@@ -9,6 +9,7 @@ import java.util.Optional;
 public enum Command {
 
     GO_TO("go to"),
+    LOOK_AROUND("la"),
     HELP("help"),
     EXIT("exit");
 

@@ -6,12 +6,12 @@ Esta um dia ensolarado e voce acabou de matar sua fome.
     </Description>
     <Ways>
         <Way>
-            <Choice>Forest</Choice>
-            <NextLocationName>forest</NextLocationName>
+            <Choice>forest</Choice>
+            <NextLocationName>Forest</NextLocationName>
         </Way>
         <Way>
-            <Choice>Castle</Choice>
-            <NextLocationName>castle</NextLocationName>
+            <Choice>castle</Choice>
+            <NextLocationName>Castle</NextLocationName>
         </Way>
     </Ways>
 </Location>

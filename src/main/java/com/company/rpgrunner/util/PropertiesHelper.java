@@ -1,6 +1,5 @@
 package com.company.rpgrunner.util;
 
-import java.io.IOException;
 import java.util.Optional;
 import java.util.Properties;
 
@@ -30,8 +29,7 @@ public class PropertiesHelper {
 
         try {
             properties.load(PropertiesHelper.class.getClassLoader().getResourceAsStream(name + PROPERTIES_EXTENSION));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             return Optional.empty();
         }
 

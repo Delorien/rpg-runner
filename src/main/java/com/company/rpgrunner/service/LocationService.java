@@ -1,8 +1,10 @@
 package com.company.rpgrunner.service;
 
-import com.company.rpgrunner.repository.map.model.Location;
 import com.company.rpgrunner.repository.map.LocationLoader;
-import com.company.rpgrunner.ui.Response;
+import com.company.rpgrunner.repository.map.model.Location;
+import com.company.rpgrunner.ui.response.LookAroundResponse;
+import com.company.rpgrunner.ui.response.Response;
+import com.company.rpgrunner.ui.response.SimpleMessageResponse;
 
 import java.util.Optional;
 
@@ -11,15 +13,28 @@ import java.util.Optional;
  */
 public class LocationService {
 
+    private static LocationService INSTANCE;
     private final LocationLoader locationLoader;
+    private Location actualLocation;
 
-    public LocationService() {
-        this.locationLoader = new LocationLoader();
+    private LocationService() {
+        locationLoader = new LocationLoader();
+    }
+
+    public static LocationService getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new LocationService();
+        }
+        return INSTANCE;
     }
 
     public Response goTo(String target) {
-        Optional<Location> optionalLocation = locationLoader.load(target);
+        Optional<Location> optionalLocation = locationLoader.load(target.toLowerCase());
+        actualLocation = optionalLocation.get();
+        return new SimpleMessageResponse(actualLocation.getDescription());
+    }
 
-        return new Response(optionalLocation.get().getDescription());
+    public Response lookAround() {
+        return new LookAroundResponse(actualLocation);
     }
 }

@@ -5,7 +5,7 @@ import com.company.rpgrunner.util.XMLHelper;
 import javax.xml.bind.JAXBException;
 import java.util.Optional;
 
-import static com.company.rpgrunner.util.GameResourcesPath.XML_EXTENSION;
+import static com.company.rpgrunner.commons.GameResourcesPath.XML_EXTENSION;
 
 /**
  * Created by Leonardo Tonin on 16/02/19.
@@ -21,10 +21,9 @@ public abstract class ComponentLoader<T> {
     public Optional<T> load(String name) {
         try {
             return Optional.of(loadLocation(name));
-        } catch (JAXBException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            return Optional.empty();
         }
-        return Optional.empty();
     }
 
     private T loadLocation(String name) throws JAXBException {

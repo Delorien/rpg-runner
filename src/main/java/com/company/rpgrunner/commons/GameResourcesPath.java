@@ -1,4 +1,4 @@
-package com.company.rpgrunner.util;
+package com.company.rpgrunner.commons;
 
 /**
  * Created by Leonardo Tonin on 16/02/19.
