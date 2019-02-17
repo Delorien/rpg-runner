@@ -1,4 +1,4 @@
-package com.company.rpgrunner.ui;
+package com.company.rpgrunner.ui.command;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -6,25 +6,21 @@ import java.util.Optional;
 /**
  * Created by Leonardo Tonin on 16/02/19.
  */
-public enum Command {
+public enum PlayCommand {
 
     GO_TO("go to"),
     LOOK_AROUND("la"),
+    WHERE_AM_I("where am i"),
     HELP("help"),
     EXIT("exit");
 
     private String value;
 
-    Command(String value) {
+    PlayCommand(String value) {
         this.value = value;
     }
 
-    public static Boolean contains(String value) {
-        return Arrays.stream(values())
-                .anyMatch(command -> command.value == value);
-    }
-
-    public static Optional<Command> getByStart(String input) {
+    public static Optional<PlayCommand> getByStart(String input) {
         return Arrays.stream(values())
                 .filter(command -> input.startsWith(command.value)
                 ).findFirst();

@@ -20,6 +20,9 @@ public class GameMessage {
     public final static String INSTRUCTIONS_MESSAGE = "instructions";
     public final static String INVALID_COMMAND = "invalid.command";
     public final static String EXIT_MESSAGE = "exit.message";
+    public final static String INVALID_CHOICE = "invalid.choice";
+    public final static String MENU_MESSAGE = "menu.message";
+    public final static String ENTER_NEW_PLAYER_NAME = "enter.new.player.name";
 
     private final static String MESSAGE_PROPERTIES = "messages";
     private static GameMessage INSTANCE;

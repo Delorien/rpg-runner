@@ -3,17 +3,17 @@ package com.company.rpgrunner.ui;
 /**
  * Created by Leonardo Tonin on 16/02/19.
  */
-public class PlayerCommand {
+public class PlayerRequest {
 
-    private final Command command;
+    private final String command;
     private final String target;
 
-    public PlayerCommand(Command command, String target) {
+    public PlayerRequest(String command, String target) {
         this.command = command;
         this.target = target;
     }
 
-    public Command getCommand() {
+    public String getCommand() {
         return command;
     }
 
