@@ -1,7 +1,7 @@
 package com.company.rpgrunner.service;
 
 /**
- * Created by lneto on 18/02/19.
+ * Created by Leonardo Tonin on 18/02/19.
  */
 public class Player {
 

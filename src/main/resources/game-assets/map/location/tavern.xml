@@ -2,8 +2,8 @@
     <FileName>tavern</FileName>>
     <Name>Moe Tavern</Name>
     <Description>
-Voce entrou na taverna do moe.
-Esta um dia ensolarado e voce acabou de matar sua fome.
+        Voce entrou na taverna do moe.
+        Esta um dia ensolarado e voce acabou de matar sua fome.
     </Description>
     <Ways>
         <Way>
@@ -15,4 +15,18 @@ Esta um dia ensolarado e voce acabou de matar sua fome.
             <NextLocationName>Castle</NextLocationName>
         </Way>
     </Ways>
+    <Itens>
+        <Item>
+            <Name>Beer</Name>
+            <Description>
+                You see a beer botle that says: Duff's Beer
+            </Description>
+        </Item>
+        <Item>
+            <Name>Warning</Name>
+            <Description>
+                A "no drive drunk" warning on the wall
+            </Description>
+        </Item>
+    </Itens>
 </Location>

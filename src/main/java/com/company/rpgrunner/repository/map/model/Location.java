@@ -1,5 +1,7 @@
 package com.company.rpgrunner.repository.map.model;
 
+import com.company.rpgrunner.repository.item.Item;
+
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
@@ -21,7 +23,11 @@ public class Location {
 
     @XmlElementWrapper(name = "Ways")
     @XmlElement(name = "Way")
-    private List<Way> Ways;
+    private List<Way> ways;
+
+    @XmlElementWrapper(name = "Itens")
+    @XmlElement(name = "Item")
+    private List<Item> itens;
 
     public String getFileName() {
         return fileName;
@@ -48,10 +54,18 @@ public class Location {
     }
 
     public List<Way> getWays() {
-        return Ways;
+        return ways;
     }
 
     public void setWays(List<Way> ways) {
-        Ways = ways;
+        this.ways = ways;
+    }
+
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
     }
 }
