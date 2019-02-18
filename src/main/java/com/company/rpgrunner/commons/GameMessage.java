@@ -23,6 +23,10 @@ public class GameMessage {
     public final static String INVALID_CHOICE = "invalid.choice";
     public final static String MENU_MESSAGE = "menu.message";
     public final static String ENTER_NEW_PLAYER_NAME = "enter.new.player.name";
+    public final static String ENTER_LOAD_PLAYER_NAME = "enter.load.player.name";
+    public final static String WELCOME_BACK_PLAYER = "welcome.back.player";
+    public final static String WELCOME_PLAYER = "welcome.player";
+    public final static String PLAYER_NOT_FOUND = "player.not.found";
 
     private final static String MESSAGE_PROPERTIES = "messages";
     private static GameMessage INSTANCE;

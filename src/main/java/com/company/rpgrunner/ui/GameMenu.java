@@ -1,6 +1,7 @@
 package com.company.rpgrunner.ui;
 
 import com.company.rpgrunner.service.PlayerService;
+import com.company.rpgrunner.ui.response.Response;
 import com.company.rpgrunner.ui.response.ResponseHandler;
 import com.company.rpgrunner.ui.response.SimpleMessageResponse;
 import com.company.rpgrunner.util.InstructionsHelper;
@@ -49,14 +50,24 @@ public class GameMenu {
             if (NEW_GAME.equalToValue(command)) {
                 responseHandler.respondToPlayer(new SimpleMessageResponse(getMessage(ENTER_NEW_PLAYER_NAME)));
                 String name = scanner.nextLine();
-                playerService.createNewPlayer(name);
+                responseHandler.respondToPlayer(playerService.createNewPlayer(name));
                 isMenuRunning = FALSE;
             }
             if (LOAD_SAVED_GAME.equalToValue(command)) {
+                responseHandler.respondToPlayer(new SimpleMessageResponse(getMessage(ENTER_LOAD_PLAYER_NAME)));
+                String name = scanner.nextLine();
 
+                Optional<Response> optionalResponse = playerService.loadPlayer(name);
+                if (optionalResponse.isPresent()) {
+                    responseHandler.respondToPlayer(optionalResponse.get());
+                    isMenuRunning = FALSE;
+                } else {
+                    responseHandler.respondToPlayer(new SimpleMessageResponse(getMessage(PLAYER_NOT_FOUND)));
+                    responseHandler.respondToPlayer(new SimpleMessageResponse(getMessage(MENU_MESSAGE)));
+                }
             }
-            startGameLoop();
         }
+        startGameLoop();
     }
 
     private void startGameLoop() {
