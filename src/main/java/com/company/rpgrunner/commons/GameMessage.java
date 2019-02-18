@@ -27,6 +27,7 @@ public class GameMessage {
     public final static String WELCOME_BACK_PLAYER = "welcome.back.player";
     public final static String WELCOME_PLAYER = "welcome.player";
     public final static String PLAYER_NOT_FOUND = "player.not.found";
+    public final static String GAME_SAVED = "game.saved";
 
     private final static String MESSAGE_PROPERTIES = "messages";
     private static GameMessage INSTANCE;

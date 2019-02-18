@@ -11,6 +11,7 @@ public enum PlayCommand {
     GO_TO("go to"),
     LOOK_AROUND("la"),
     WHERE_AM_I("where am i"),
+    SAVE("save"),
     HELP("help"),
     EXIT("exit");
 

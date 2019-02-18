@@ -1,6 +1,7 @@
 package com.company.rpgrunner.service;
 
 import com.company.rpgrunner.commons.exception.PlayerFileException;
+import com.company.rpgrunner.repository.map.model.Location;
 import com.company.rpgrunner.ui.response.Response;
 import com.company.rpgrunner.ui.response.SimpleMessageResponse;
 import com.company.rpgrunner.util.CriticalExceptionHandler;
@@ -52,5 +53,19 @@ public class PlayerService {
             CriticalExceptionHandler.handler(new PlayerFileException(PLAYER_FILE_ERROR));
         }
         return Optional.of(new SimpleMessageResponse(String.format(getMessage(WELCOME_BACK_PLAYER), name)));
+    }
+
+    public Response saveGame(Location actualLocation) {
+        player.setActualLocation(actualLocation.getFileName());
+        try {
+            playerPersistenceHelper.save(player);
+        } catch (IOException e) {
+            CriticalExceptionHandler.handler(new PlayerFileException(PLAYER_FILE_ERROR));
+        }
+        return new SimpleMessageResponse((getMessage(GAME_SAVED)));
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

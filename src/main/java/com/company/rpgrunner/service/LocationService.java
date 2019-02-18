@@ -18,6 +18,7 @@ public class LocationService {
 
     private static LocationService INSTANCE;
     private final LocationLoader locationLoader;
+
     private Location actualLocation;
 
     private LocationService() {
@@ -56,5 +57,9 @@ public class LocationService {
 
     public Response whereAmI() {
         return new SimpleMessageResponse(actualLocation.getName());
+    }
+
+    public Location getActualLocation() {
+        return actualLocation;
     }
 }

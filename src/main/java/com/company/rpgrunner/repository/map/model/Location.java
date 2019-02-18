@@ -10,6 +10,9 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Location {
 
+    @XmlElement(name = "FileName")
+    private String fileName;
+
     @XmlElement(name = "Name")
     private String name;
 
@@ -19,6 +22,14 @@ public class Location {
     @XmlElementWrapper(name = "Ways")
     @XmlElement(name = "Way")
     private List<Way> Ways;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public String getName() {
         return name;

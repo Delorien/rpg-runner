@@ -3,6 +3,7 @@ package com.company.rpgrunner.ui;
 import com.company.rpgrunner.repository.gamemanifest.model.GameManifest;
 import com.company.rpgrunner.service.GameManifestService;
 import com.company.rpgrunner.service.LocationService;
+import com.company.rpgrunner.service.PlayerService;
 import com.company.rpgrunner.ui.response.Response;
 import com.company.rpgrunner.ui.response.ResponseHandler;
 import com.company.rpgrunner.ui.response.SimpleMessageResponse;
@@ -22,19 +23,22 @@ import static java.lang.Boolean.TRUE;
 public class GameLoop {
 
     private final LocationService locationService;
+    private final PlayerService playerService;
     private final ResponseHandler responseHandler;
     private final GameManifest gameManifest;
     private final InstructionsHelper instructionsHelper;
 
     public GameLoop() {
-        gameManifest = new GameManifestService().load();
         locationService = LocationService.getInstance();
+        playerService = PlayerService.getInstance();
         responseHandler = ResponseHandler.getInstance();
+        gameManifest = new GameManifestService().load();
         instructionsHelper = new InstructionsHelper();
     }
 
     public void runGame() {
-        startNewStory();
+
+        startGame();
 
         final Scanner scanner = new Scanner(System.in);
 
@@ -58,10 +62,13 @@ public class GameLoop {
                 responseHandler.respondToPlayer(locationService.whereAmI());
             }
 
-
             if (GO_TO.equalToValue(command)) {
                 responseHandler.respondToPlayer(locationService.goTo(target));
                 continue;
+            }
+
+            if (SAVE.equalToValue(command)) {
+                responseHandler.respondToPlayer(playerService.saveGame(locationService.getActualLocation()));
             }
 
             if (HELP.equalToValue(command)) {
@@ -78,8 +85,19 @@ public class GameLoop {
         scanner.close();
     }
 
+    private void startGame() {
+        if (playerService.getPlayer().getActualLocation() == null) {
+            startNewStory();
+        } else {
+            continueStory();
+        }
+    }
+
     private void startNewStory() {
-        Response response = locationService.goTo(gameManifest.getStartLocation());
-        responseHandler.respondToPlayer(response);
+        responseHandler.respondToPlayer(locationService.goTo(gameManifest.getStartLocation()));
+    }
+
+    private void continueStory() {
+        responseHandler.respondToPlayer(locationService.goTo(playerService.getPlayer().getActualLocation()));
     }
 }

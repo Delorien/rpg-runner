@@ -11,9 +11,13 @@ import java.util.stream.Collectors;
  */
 public class PlayerPersistenceHelper {
 
+    public static final String NAME = "name";
+    public static final String ACTUAL_LOCATION = "actualLocation";
+    public static final String JUMP_LINE = "\n";
+
     public void saveNewPlayer(String name) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(name));
-        writer.write("name:" + name);
+        writer.write(NAME + ":" + name);
         writer.close();
     }
 
@@ -24,7 +28,18 @@ public class PlayerPersistenceHelper {
     }
 
     private Player toPlayer(Map<String, String> lines) {
-        String name = lines.get("name");
-        return new Player(name);
+        String name = lines.get(NAME);
+        String actualLocation = lines.get(ACTUAL_LOCATION);
+        Player player = new Player(name);
+        player.setActualLocation(actualLocation);
+        return player;
+    }
+
+    public void save(Player player) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(player.getName()));
+        writer.write(NAME + ":" + player.getName());
+        writer.write(JUMP_LINE);
+        writer.write(ACTUAL_LOCATION + ":" + player.getActualLocation());
+        writer.close();
     }
 }
