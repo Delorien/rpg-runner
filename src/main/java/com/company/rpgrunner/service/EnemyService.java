@@ -38,4 +38,9 @@ public class EnemyService {
 
         return new EnemyViewResponse(optionalEnemy.get());
     }
+
+    public Optional<Enemy> load(String target) {
+        Optional<Enemy> optionalEnemy = enemyLoader.load(target.toLowerCase());
+        return optionalEnemy;
+    }
 }

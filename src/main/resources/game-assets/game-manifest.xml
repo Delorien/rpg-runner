@@ -1,3 +1,5 @@
 <GameManifest>
     <StartLocation>tavern</StartLocation>
+    <PlayerInitialLife>10</PlayerInitialLife>
+    <PlayerInitialDamage>3</PlayerInitialDamage>
 </GameManifest>

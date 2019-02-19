@@ -1,4 +1,4 @@
-package com.company.rpgrunner.service;
+package com.company.rpgrunner.service.player;
 
 import com.company.rpgrunner.commons.exception.PlayerFileException;
 import com.company.rpgrunner.repository.map.model.Location;

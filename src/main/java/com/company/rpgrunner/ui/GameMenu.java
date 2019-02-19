@@ -1,6 +1,6 @@
 package com.company.rpgrunner.ui;
 
-import com.company.rpgrunner.service.PlayerService;
+import com.company.rpgrunner.service.player.PlayerService;
 import com.company.rpgrunner.ui.request.PlayerRequest;
 import com.company.rpgrunner.ui.response.Response;
 import com.company.rpgrunner.ui.response.ResponseHandler;

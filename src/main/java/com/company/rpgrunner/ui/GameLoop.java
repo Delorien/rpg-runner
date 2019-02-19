@@ -1,7 +1,12 @@
 package com.company.rpgrunner.ui;
 
+import com.company.rpgrunner.repository.enemy.model.Enemy;
 import com.company.rpgrunner.repository.gamemanifest.model.GameManifest;
-import com.company.rpgrunner.service.*;
+import com.company.rpgrunner.service.EnemyService;
+import com.company.rpgrunner.service.GameManifestService;
+import com.company.rpgrunner.service.ItemService;
+import com.company.rpgrunner.service.LocationService;
+import com.company.rpgrunner.service.player.PlayerService;
 import com.company.rpgrunner.ui.request.PlayerRequest;
 import com.company.rpgrunner.ui.response.ResponseHandler;
 import com.company.rpgrunner.ui.response.SimpleMessageResponse;
@@ -34,7 +39,7 @@ public class GameLoop {
         itemService = ItemService.getInstance();
         enemyService = EnemyService.getInstance();
         responseHandler = ResponseHandler.getInstance();
-        gameManifest = new GameManifestService().load();
+        gameManifest = GameManifestService.getInstance().load();
         instructionsHelper = new InstructionsHelper();
     }
 
@@ -78,6 +83,17 @@ public class GameLoop {
 
             if (CHECK_ENEMY.equalToValue(command)) {
                 responseHandler.respondToPlayer(enemyService.check(target));
+                continue;
+            }
+
+            if (ATTACK.equalToValue(command)) {
+                Optional<Enemy> optionalEnemy = enemyService.load(target);
+                if (!optionalEnemy.isPresent()) {
+                    responseHandler.respondToPlayer(new SimpleMessageResponse(getMessage(INVALID_CHOICE)));
+                    continue;
+                }
+                new FightLoop().runFight(optionalEnemy.get());
+                continue;
             }
 
             if (SAVE.equalToValue(command)) {
