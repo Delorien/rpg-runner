@@ -3,6 +3,7 @@ package com.company.rpgrunner.service;
 import com.company.rpgrunner.repository.map.LocationLoader;
 import com.company.rpgrunner.repository.map.model.Location;
 import com.company.rpgrunner.ui.response.LookAroundResponse;
+import com.company.rpgrunner.ui.response.PicturePrintableResponse;
 import com.company.rpgrunner.ui.response.Response;
 import com.company.rpgrunner.ui.response.SimpleMessageResponse;
 
@@ -43,7 +44,7 @@ public class LocationService {
         }
 
         actualLocation = optionalLocation.get();
-        return new SimpleMessageResponse(actualLocation.getDescription());
+        return new PicturePrintableResponse(actualLocation, actualLocation.getDescription());
     }
 
     private Boolean isInvalidWay(String target) {

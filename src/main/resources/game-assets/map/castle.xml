@@ -2,8 +2,8 @@
     <FileName>castle</FileName>
     <Name>Kings Castle</Name>
     <Description>
-Voce entrou no castelo do rei. Voce esta vendo um patio largo.
-Muitas pessoas andam apressadas de lado por outro.
+        Voce entrou no castelo do rei. Voce esta vendo um patio largo.
+        Muitas pessoas andam apressadas de lado por outro.
     </Description>
     <Ways>
         <Way>
@@ -19,4 +19,5 @@ Muitas pessoas andam apressadas de lado por outro.
             <Name>Troll</Name>
         </Enemy>
     </Enemies>
+    <PictureName>castle</PictureName>
 </Location>

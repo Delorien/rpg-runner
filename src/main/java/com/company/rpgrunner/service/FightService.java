@@ -10,7 +10,6 @@ import com.company.rpgrunner.ui.response.SimpleMessageResponse;
 
 import java.util.Random;
 
-import static com.company.rpgrunner.commons.GameMessage.YOU_LOOSE;
 import static com.company.rpgrunner.commons.GameMessage.YOU_WIN;
 import static com.company.rpgrunner.commons.GameMessage.getMessage;
 import static java.lang.Boolean.FALSE;

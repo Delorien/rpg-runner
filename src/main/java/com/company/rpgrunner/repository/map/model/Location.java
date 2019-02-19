@@ -1,5 +1,6 @@
 package com.company.rpgrunner.repository.map.model;
 
+import com.company.rpgrunner.commons.PicturePrintable;
 import com.company.rpgrunner.repository.enemy.model.Enemy;
 import com.company.rpgrunner.repository.item.model.Item;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "Location")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Location {
+public class Location implements PicturePrintable {
 
     @XmlElement(name = "FileName")
     private String fileName;
@@ -22,6 +23,9 @@ public class Location {
 
     @XmlElement(name = "Description")
     private String description;
+
+    @XmlElement(name = "PictureName")
+    private String pictureName;
 
     @XmlElementWrapper(name = "Ways")
     @XmlElement(name = "Way")
@@ -90,5 +94,14 @@ public class Location {
 
     public void setEnemies(List<Enemy> enemies) {
         this.enemies = enemies;
+    }
+
+    @Override
+    public String getPictureName() {
+        return pictureName;
+    }
+
+    public void setPictureName(String pictureName) {
+        this.pictureName = pictureName;
     }
 }
