@@ -18,15 +18,9 @@
     <Itens>
         <Item>
             <Name>Beer</Name>
-            <Description>
-                You see a beer botle that says: Duff's Beer
-            </Description>
         </Item>
         <Item>
             <Name>Warning</Name>
-            <Description>
-                A "no drive drunk" warning on the wall
-            </Description>
         </Item>
     </Itens>
 </Location>

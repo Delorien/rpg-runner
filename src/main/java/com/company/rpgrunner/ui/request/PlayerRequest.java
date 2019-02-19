@@ -1,4 +1,4 @@
-package com.company.rpgrunner.ui;
+package com.company.rpgrunner.ui.request;
 
 /**
  * Created by Leonardo Tonin on 16/02/19.

@@ -2,9 +2,10 @@ package com.company.rpgrunner.ui;
 
 import com.company.rpgrunner.repository.gamemanifest.model.GameManifest;
 import com.company.rpgrunner.service.GameManifestService;
+import com.company.rpgrunner.service.ItemService;
 import com.company.rpgrunner.service.LocationService;
 import com.company.rpgrunner.service.PlayerService;
-import com.company.rpgrunner.ui.response.Response;
+import com.company.rpgrunner.ui.request.PlayerRequest;
 import com.company.rpgrunner.ui.response.ResponseHandler;
 import com.company.rpgrunner.ui.response.SimpleMessageResponse;
 import com.company.rpgrunner.util.InstructionsHelper;
@@ -13,7 +14,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import static com.company.rpgrunner.commons.GameMessage.*;
-import static com.company.rpgrunner.ui.command.PlayCommand.*;
+import static com.company.rpgrunner.ui.request.command.PlayCommand.*;
 import static com.company.rpgrunner.util.PlayerRequestHelper.fromPlayCommand;
 import static java.lang.Boolean.TRUE;
 
@@ -24,6 +25,7 @@ public class GameLoop {
 
     private final LocationService locationService;
     private final PlayerService playerService;
+    private final ItemService itemService;
     private final ResponseHandler responseHandler;
     private final GameManifest gameManifest;
     private final InstructionsHelper instructionsHelper;
@@ -31,6 +33,7 @@ public class GameLoop {
     public GameLoop() {
         locationService = LocationService.getInstance();
         playerService = PlayerService.getInstance();
+        itemService = ItemService.getInstance();
         responseHandler = ResponseHandler.getInstance();
         gameManifest = new GameManifestService().load();
         instructionsHelper = new InstructionsHelper();
@@ -56,10 +59,12 @@ public class GameLoop {
 
             if (LOOK_AROUND.equalToValue(command)) {
                 responseHandler.respondToPlayer(locationService.lookAround());
+                continue;
             }
 
             if (WHERE_AM_I.equalToValue(command)) {
                 responseHandler.respondToPlayer(locationService.whereAmI());
+                continue;
             }
 
             if (GO_TO.equalToValue(command)) {
@@ -67,8 +72,14 @@ public class GameLoop {
                 continue;
             }
 
+            if (INTERACT.equalToValue(command)) {
+                responseHandler.respondToPlayer(itemService.interactWith(target));
+                continue;
+            }
+
             if (SAVE.equalToValue(command)) {
                 responseHandler.respondToPlayer(playerService.saveGame(locationService.getActualLocation()));
+                continue;
             }
 
             if (HELP.equalToValue(command)) {

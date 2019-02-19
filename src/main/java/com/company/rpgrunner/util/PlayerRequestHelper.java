@@ -1,8 +1,8 @@
 package com.company.rpgrunner.util;
 
-import com.company.rpgrunner.ui.command.MenuCommand;
-import com.company.rpgrunner.ui.command.PlayCommand;
-import com.company.rpgrunner.ui.PlayerRequest;
+import com.company.rpgrunner.ui.request.command.MenuCommand;
+import com.company.rpgrunner.ui.request.command.PlayCommand;
+import com.company.rpgrunner.ui.request.PlayerRequest;
 
 import java.util.Optional;
 

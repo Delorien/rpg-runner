@@ -1,6 +1,7 @@
 package com.company.rpgrunner.ui;
 
 import com.company.rpgrunner.service.PlayerService;
+import com.company.rpgrunner.ui.request.PlayerRequest;
 import com.company.rpgrunner.ui.response.Response;
 import com.company.rpgrunner.ui.response.ResponseHandler;
 import com.company.rpgrunner.ui.response.SimpleMessageResponse;
@@ -10,8 +11,8 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import static com.company.rpgrunner.commons.GameMessage.*;
-import static com.company.rpgrunner.ui.command.MenuCommand.LOAD_SAVED_GAME;
-import static com.company.rpgrunner.ui.command.MenuCommand.NEW_GAME;
+import static com.company.rpgrunner.ui.request.command.MenuCommand.LOAD_SAVED_GAME;
+import static com.company.rpgrunner.ui.request.command.MenuCommand.NEW_GAME;
 import static com.company.rpgrunner.util.PlayerRequestHelper.fromMenuCommand;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;

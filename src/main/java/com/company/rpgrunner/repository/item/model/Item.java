@@ -1,4 +1,7 @@
-package com.company.rpgrunner.repository.item;
+package com.company.rpgrunner.repository.item.model;
+
+import com.company.rpgrunner.ui.response.ReadInteractionResponse;
+import com.company.rpgrunner.ui.response.Response;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -10,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "Item")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Item {
+public class Item implements Interactable {
 
     @XmlElement(name = "Name")
     private String name;
@@ -32,5 +35,10 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public Response interact() {
+        return new ReadInteractionResponse(this);
     }
 }

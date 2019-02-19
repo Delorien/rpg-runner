@@ -1,4 +1,4 @@
-package com.company.rpgrunner.ui.command;
+package com.company.rpgrunner.ui.request.command;
 
 import java.util.Arrays;
 import java.util.Optional;

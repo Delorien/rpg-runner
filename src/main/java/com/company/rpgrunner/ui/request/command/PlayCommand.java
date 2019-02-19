@@ -1,4 +1,4 @@
-package com.company.rpgrunner.ui.command;
+package com.company.rpgrunner.ui.request.command;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -11,6 +11,7 @@ public enum PlayCommand {
     GO_TO("go to"),
     LOOK_AROUND("la"),
     WHERE_AM_I("where am i"),
+    INTERACT("get"),
     SAVE("save"),
     HELP("help"),
     EXIT("exit");

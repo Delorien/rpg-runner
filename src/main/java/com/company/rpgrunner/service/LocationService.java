@@ -18,7 +18,6 @@ public class LocationService {
 
     private static LocationService INSTANCE;
     private final LocationLoader locationLoader;
-
     private Location actualLocation;
 
     private LocationService() {

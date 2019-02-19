@@ -1,6 +1,6 @@
 package com.company.rpgrunner.repository.map.model;
 
-import com.company.rpgrunner.repository.item.Item;
+import com.company.rpgrunner.repository.item.model.Item;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;
