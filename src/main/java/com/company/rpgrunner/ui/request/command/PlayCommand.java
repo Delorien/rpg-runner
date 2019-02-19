@@ -13,6 +13,7 @@ public enum PlayCommand {
     WHERE_AM_I("where am i"),
     INTERACT("get"),
     CHECK_ENEMY("check"),
+    ATTACK("attack"),
     SAVE("save"),
     HELP("help"),
     EXIT("exit");
