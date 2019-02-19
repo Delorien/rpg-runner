@@ -11,4 +11,12 @@ Muitas pessoas andam apressadas de lado por outro.
             <NextLocationName>tavern</NextLocationName>
         </Way>
     </Ways>
+    <Enemies>
+        <Enemy>
+            <Name>Goblin</Name>
+        </Enemy>
+        <Enemy>
+            <Name>Troll</Name>
+        </Enemy>
+    </Enemies>
 </Location>

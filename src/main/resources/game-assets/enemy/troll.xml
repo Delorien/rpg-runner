@@ -1,0 +1,6 @@
+<Enemy>
+    <Name>Troll</Name>
+    <Description>A giant troll with a look of attack!</Description>
+    <Life>7</Life>
+    <Damage>2</Damage>
+</Enemy>

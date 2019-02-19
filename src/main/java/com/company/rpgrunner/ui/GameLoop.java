@@ -1,10 +1,7 @@
 package com.company.rpgrunner.ui;
 
 import com.company.rpgrunner.repository.gamemanifest.model.GameManifest;
-import com.company.rpgrunner.service.GameManifestService;
-import com.company.rpgrunner.service.ItemService;
-import com.company.rpgrunner.service.LocationService;
-import com.company.rpgrunner.service.PlayerService;
+import com.company.rpgrunner.service.*;
 import com.company.rpgrunner.ui.request.PlayerRequest;
 import com.company.rpgrunner.ui.response.ResponseHandler;
 import com.company.rpgrunner.ui.response.SimpleMessageResponse;
@@ -26,6 +23,7 @@ public class GameLoop {
     private final LocationService locationService;
     private final PlayerService playerService;
     private final ItemService itemService;
+    private final EnemyService enemyService;
     private final ResponseHandler responseHandler;
     private final GameManifest gameManifest;
     private final InstructionsHelper instructionsHelper;
@@ -34,6 +32,7 @@ public class GameLoop {
         locationService = LocationService.getInstance();
         playerService = PlayerService.getInstance();
         itemService = ItemService.getInstance();
+        enemyService = EnemyService.getInstance();
         responseHandler = ResponseHandler.getInstance();
         gameManifest = new GameManifestService().load();
         instructionsHelper = new InstructionsHelper();
@@ -75,6 +74,10 @@ public class GameLoop {
             if (INTERACT.equalToValue(command)) {
                 responseHandler.respondToPlayer(itemService.interactWith(target));
                 continue;
+            }
+
+            if (CHECK_ENEMY.equalToValue(command)) {
+                responseHandler.respondToPlayer(enemyService.check(target));
             }
 
             if (SAVE.equalToValue(command)) {

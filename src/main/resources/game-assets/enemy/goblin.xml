@@ -1,0 +1,6 @@
+<Enemy>
+    <Name>Goblin</Name>
+    <Description>A disgusting Goblin with an ax pointed at you!</Description>
+    <Life>5</Life>
+    <Damage>1</Damage>
+</Enemy>
