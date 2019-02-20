@@ -20,13 +20,13 @@ public abstract class ComponentLoader<T> {
 
     public Optional<T> load(String name) {
         try {
-            return Optional.of(loadLocation(name));
+            return Optional.of(loadComponent(name));
         } catch (Exception e) {
             return Optional.empty();
         }
     }
 
-    private T loadLocation(String name) throws JAXBException {
+    private T loadComponent(String name) throws JAXBException {
         return new XMLHelper().unmarshal(getPath() + name + XML_EXTENSION, type);
     }
 

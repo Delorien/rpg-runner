@@ -1,9 +1,7 @@
 package com.company.rpgrunner.ui;
 
 import com.company.rpgrunner.repository.enemy.model.Enemy;
-import com.company.rpgrunner.service.EnemyService;
 import com.company.rpgrunner.service.FightService;
-import com.company.rpgrunner.service.player.PlayerService;
 import com.company.rpgrunner.ui.response.GameOverMessageResponse;
 import com.company.rpgrunner.ui.response.Response;
 import com.company.rpgrunner.ui.response.ResponseHandler;
@@ -12,11 +10,8 @@ import com.company.rpgrunner.ui.response.SimpleMessageResponse;
 import java.util.Scanner;
 
 import static com.company.rpgrunner.commons.GameMessage.FIGHT_INSTRUCTIONS;
-import static com.company.rpgrunner.commons.GameMessage.INVALID_COMMAND;
 import static com.company.rpgrunner.commons.GameMessage.getMessage;
 import static com.company.rpgrunner.ui.request.command.PlayCommand.ATTACK;
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
 
 /**
  * Created by Leonardo Tonin on 18/02/19.

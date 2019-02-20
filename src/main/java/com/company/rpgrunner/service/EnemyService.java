@@ -17,7 +17,7 @@ import static com.company.rpgrunner.commons.GameMessage.getMessage;
 public class EnemyService {
 
     private static EnemyService INSTANCE;
-    private final EnemyLoader enemyLoader;
+    private EnemyLoader enemyLoader;
 
     private EnemyService() {
         enemyLoader = new EnemyLoader();
