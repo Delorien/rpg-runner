@@ -32,7 +32,7 @@ public class EnemyServiceTest extends EasyMockSupport {
     @TestSubject
     private EnemyService enemyService = EnemyService.getInstance();
 
-    @Mock(fieldName = "enemyLoader")
+    @Mock
     private EnemyLoader enemyLoader;
 
     @BeforeClass
@@ -41,7 +41,7 @@ public class EnemyServiceTest extends EasyMockSupport {
     }
 
     @Test
-    public void loadFailReturnOptionalEmpty() {
+    public void loadFailMustReturnAOptionalEmpty() {
 
         expect(enemyLoader.load("goblin")).andReturn(Optional.empty());
         replayAll();
@@ -52,7 +52,7 @@ public class EnemyServiceTest extends EasyMockSupport {
     }
 
     @Test
-    public void loadSuccessReturnAOptionalWithAEnemy() {
+    public void loadSuccessMustReturnAOptionalWithAEnemy() {
 
         Enemy enemy = getAGoblin();
         expect(enemyLoader.load("goblin")).andReturn(Optional.of(enemy));
@@ -64,7 +64,7 @@ public class EnemyServiceTest extends EasyMockSupport {
     }
 
     @Test
-    public void checkAInvalidEnemyReturnAInvalidChoiceResponse() {
+    public void checkAInvalidEnemyMustReturnAInvalidChoiceResponse() {
         expect(enemyLoader.load("merlin")).andReturn(Optional.empty());
         replayAll();
 
@@ -75,7 +75,7 @@ public class EnemyServiceTest extends EasyMockSupport {
     }
 
     @Test
-    public void checkAValidEnemyReturnAEnemyViewResponse() {
+    public void checkAValidEnemyMustReturnAEnemyViewResponse() {
         Enemy enemy = getAGoblin();
         expect(enemyLoader.load("goblin")).andReturn(Optional.of(enemy));
         replayAll();

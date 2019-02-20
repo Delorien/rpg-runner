@@ -1,7 +1,6 @@
 package com.company.rpgrunner.service;
 
 import com.company.rpgrunner.commons.exception.CouldNotLoadManifestException;
-import com.company.rpgrunner.repository.enemy.EnemyLoader;
 import com.company.rpgrunner.repository.gamemanifest.GameManifestLoader;
 import com.company.rpgrunner.repository.gamemanifest.model.GameManifest;
 
@@ -18,7 +17,7 @@ public class GameManifestService {
     private final static String GAME_MANIFEST_FILE = "game-manifest";
 
     private static GameManifestService INSTANCE;
-    private final GameManifestLoader gameManifestLoader;
+    private GameManifestLoader gameManifestLoader;
 
     private GameManifestService() {
         gameManifestLoader = new GameManifestLoader();

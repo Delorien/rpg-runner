@@ -17,7 +17,7 @@ import static com.company.rpgrunner.commons.GameMessage.getMessage;
 public class ItemService {
 
     private static ItemService INSTANCE;
-    private final ItemLoader itemLoader;
+    private ItemLoader itemLoader;
 
     private ItemService() {
         itemLoader = new ItemLoader();
